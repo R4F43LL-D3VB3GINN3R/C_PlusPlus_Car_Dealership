@@ -101,6 +101,7 @@ struct Vehicles {
 
 	int id;
 	Vehicle_Types type;
+	std::string vehicle_type;
 	std::string license_plate;
 	Colors color;
 	Fuel_Types fuel_type;
@@ -113,7 +114,7 @@ struct Vehicles {
 	std::string brand;
 	std::string features;
 	
-	Vehicles() : id(0), type(), license_plate(""), color(), fuel_type(), year(0), odometer(0), rental_rate(0.0f), available(false), transmission(""), model(), brand(""), features("") {}	
+	Vehicles() : id(0), type(), vehicle_type(""), license_plate(""), color(), fuel_type(), year(0), odometer(0), rental_rate(0.0f), available(false), transmission(""), model(), brand(""), features("") {}	
 		
 };
 
@@ -140,9 +141,86 @@ void add_vehicle () {     // procedimento para cadastrar um veículo ao sistema.
 	
 	New_Vehicle.id = total_added; // o id da estrutura recebe o valor total de veículos cadastrados.
 	
-	Dealership[total_added] = New_Vehicle;
+	//---------------------//
+	//---Tipo do Veículo---//
+	//---------------------//
 	
-}
+	int type_vehicle = 0;
+	char answer_type_vehicle = 'Y';
+	
+	std::cout << "." << std::endl;
+	std::cout << ".." << std::endl;
+	std::cout << "..." << std::endl;
+	
+	// exibe tela de menu com opcoes.
+
+	std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+	std::cout << "|------------------------------------------------------|" << std::endl;
+	std::cout << "|------------------------------------------------------|" << std::endl;
+	std::cout << "|                                                      |" << std::endl;
+	std::cout << "|                INPUT THE VEHICLE TYPE                |" << std::endl;
+	std::cout << "|                                                      |" << std::endl;
+	std::cout << "|1.CAR                                                 |" << std::endl;
+	std::cout << "|------------------------------------------------------|" << std::endl;
+	std::cout << "|------------------------------------------------------|" << std::endl;
+	std::cout << std::endl;
+	std::cout << "OPTION: ";
+	std::cin >> type_vehicle; 
+	
+	std::cout << "..." << std::endl;
+	std::cout << ".." << std::endl;
+	std::cout << "." << std::endl;
+	
+	if (type_vehicle == 1) {
+		
+		New_Vehicle.type.car = true;
+		New_Vehicle.vehicle_type = "Car";
+		
+	} else {
+		
+			std::cout << "." << std::endl;
+			std::cout << ".." << std::endl;
+			std::cout << "..." << std::endl;
+		
+			std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << "|                                                      |" << std::endl;
+			std::cout << "|  ERROR, INSERT [Y]es or [N]o if you want to continue |" << std::endl; // exibe mensagem.
+			std::cout << "|                                                      |" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << std::endl;
+			std::cout << "OPTION: ";
+			std::cin >> answer_type_vehicle; 
+			
+			std::cout << "..." << std::endl;
+			std::cout << ".." << std::endl;
+			std::cout << "." << std::endl;
+		
+		}	
+		
+	std::cout << "." << std::endl;
+	std::cout << ".." << std::endl;
+	std::cout << "..." << std::endl;
+
+	std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+	std::cout << "|------------------------------------------------------|" << std::endl;
+	std::cout << "|------------------------------------------------------|" << std::endl;
+	std::cout << "|                                                      |" << std::endl;
+	std::cout << "|              VEHICLE ADDED SUCCESSFULLY              |" << std::endl; // exibe mensagem.
+	std::cout << "|                                                      |" << std::endl;
+	std::cout << "|------------------------------------------------------|" << std::endl;
+	std::cout << "|------------------------------------------------------|" << std::endl;
+	std::cout << std::endl;
+	
+	std::cout << "..." << std::endl;
+	std::cout << ".." << std::endl;
+	std::cout << "." << std::endl;	
+		
+	Dealership[total_added] = New_Vehicle;
+		
+	}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -193,7 +271,8 @@ void display_vehicle() {
 				std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
 				std::cout << "|------------------------------------------------------|" << std::endl;
 				std::cout << "|------------------------------------------------------|" << std::endl;
-				std::cout << "|ID: " << idsearch << std::endl;                            
+				std::cout << "|ID: " << idsearch << std::endl;  
+				std::cout << "|TYPE: " << Dealership[i + 1].vehicle_type << std::endl;                            
 				std::cout << "|                                                      |" << std::endl;
 				std::cout << "|------------------------------------------------------|" << std::endl;
 				std::cout << "|------------------------------------------------------|" << std::endl;
@@ -363,7 +442,7 @@ int main(int argc, char** argv) {
 	std::cout << "[CONTACT]..................................................................." << std::endl;
 	std::cout << "............................................................................" << std::endl;
 	std::cout << "LINKEDIN: https://www.linkedin.com/in/rafael-lopes-b8606a272/" << std::endl;
-	std::cout << "GITHUB: https://github.com/R4F43LL-D3VB3GINN3R?tab=repositories" << std::endl;	
+	std::cout << "GITHUB: https://github.com/R4F43LL-D3VB3GINN3R/CAR-DEALERSHIP-C-/blob/main/MAIN" << std::endl;	
 	std::cout << "EMAIL: @rafalbuquerquecra@gmail.com " << std::endl; 
 	std::cout << "all rights reserved." << std::endl; 
 	std::cout << "............................................................................" << std::endl;
