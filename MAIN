@@ -1,120 +1,31 @@
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#include <iostream>
-#include <string>
-#define max 100
+#include <iostream> // biblioteca nativa do compilador
+#include <string>   // bibloteca de strings
+#define max 100     // constante
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-struct Vehicle_Types {
-	
-	bool car;
-	Vehicle_Types() : car(false) {}
-	
-};
+struct Vehicles { // estrutura principal
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-struct Colors {
+	int id;                    // id do veículo
+	std::string vehicle_type;  // tipo de veículo
+	std::string license_plate; // placa ou matrícula
+	std::string color;         // cor do veículo
+	std::string fuel_type;     // tipo de combustível
+	int year;                  // ano de fabricacao
+	int odometer;              // valor atual do odometro
+	float rental_rate;         // valor do aluguel
+	std::string available;     // disponibilidade
+	std::string transmission;  // transmissão
+	std::string model;         // modelo 
+	std::string brand;         // marca
+	std::string features;      // informacoes adicionais
 	
-	bool red;
-	bool blue;
-	bool green;
-	bool white;
-	bool black;
-	bool brown;
-	bool grey;
-	bool orange;
-	bool yellow;
-	bool purple;
-	bool pink;
-	Colors() : red(false), blue(false), green(false), white(false), black(false), brown(false), grey(false), orange(false), yellow(false), purple(false), pink(false) {}
-	
-};
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-struct Fuel_Types {
-	
-	bool gasoline; 
-	bool diesel;
-	bool ethanol; 
-	bool GNV;
-	bool GPL;
-	bool electric;
-	bool hybrid;
-	Fuel_Types() : gasoline(false), diesel(false), ethanol(false), GNV(false), GPL(false), electric(false), hybrid(false) {}
-	
-};
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-struct Models_Cars {
-	
-	bool sedan;
-	bool hatchback;
-	bool SUV;
-	bool crossover;
-	bool coupe;
-	bool roadster;
-	bool wagon;
-	bool spt_car;
-	bool electric;
-	bool hybrid;
-	bool compact;
-	bool luxury;
-	Models_Cars() : sedan(false), hatchback(false), SUV(false), crossover(false), coupe(false), roadster(false), wagon(false), spt_car(false), electric(false), hybrid(false), compact(false), luxury(false) {}
-	
-};
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-struct Brand_Cars {
-	
-	bool toyota;
-	bool volkswagen;
-	bool ford;
-	bool chevrolet;
-	bool honda;
-	bool nissan;
-	bool bmw;
-	bool mercedes_benz;
-	bool audi;
-	bool hyundai;
-	bool kia;
-	bool mazda;
-	bool subaru;
-	bool tesla;
-	bool fiat;
-	bool volvo;
-	bool jaguar;
-	bool land_rover;
-	bool porsche;
-	bool lexus;
-	Brand_Cars() : toyota(false), volkswagen(false), ford(false), chevrolet(false), honda(false), nissan(false), bmw(false), mercedes_benz(false), audi(false), hyundai(false), kia(false), mazda(false), subaru(false), tesla(false), fiat(false), volvo(false), jaguar(false), land_rover(false), porsche(false), lexus(false) {}
-	
-};
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-struct Vehicles {
-
-	int id;
-	Vehicle_Types type;
-	std::string vehicle_type;
-	std::string license_plate;
-	Colors color;
-	Fuel_Types fuel_type;
-	int year;
-	int odometer;
-	float rental_rate;
-	bool available;
-	std::string transmission;
-	Models_Cars model;
-	std::string brand;
-	std::string features;
-	
-	Vehicles() : id(0), type(), vehicle_type(""), license_plate(""), color(), fuel_type(), year(0), odometer(0), rental_rate(0.0f), available(false), transmission(""), model(), brand(""), features("") {}	
+	Vehicles() : id(0), vehicle_type(""), license_plate(""), color(""), fuel_type(""), year(0), odometer(0),
+                 rental_rate(0.0f), available(""), transmission(""), model(""), brand(""), features("") {}
+                 
+    // objetos da estrutura iniciados...
 		
 };
 
@@ -126,57 +37,27 @@ Vehicles Dealership[max]; // array do tipo estrutura recebe o tamanho max de ve�
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 void add_vehicle () {     // procedimento para cadastrar um veículo ao sistema.
-
-	std::cout << "." << std::endl;
-	std::cout << ".." << std::endl;
-	std::cout << "..." << std::endl;
 	
 	Vehicles New_Vehicle; // estrutura do tipo vehicles é criada para receber os dados do veículo recém cadastrado.
+	char answer = 'Y';  // sim ou não para continuar.
 	
-	//---------------------//
-	//----ID do Veículo----//
-	//---------------------//
+	while (answer == 'Y') { // enquanto a resposta for Yes...
 	
-	total_added++; // quantidade de veículos cadastrados é incrementado.
-	
-	New_Vehicle.id = total_added; // o id da estrutura recebe o valor total de veículos cadastrados.
-	
-	//---------------------//
-	//---Tipo do Veículo---//
-	//---------------------//
-	
-	int type_vehicle = 0;
-	char answer_type_vehicle = 'Y';
-	
-	std::cout << "." << std::endl;
-	std::cout << ".." << std::endl;
-	std::cout << "..." << std::endl;
-	
-	// exibe tela de menu com opcoes.
-
-	std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
-	std::cout << "|------------------------------------------------------|" << std::endl;
-	std::cout << "|------------------------------------------------------|" << std::endl;
-	std::cout << "|                                                      |" << std::endl;
-	std::cout << "|                INPUT THE VEHICLE TYPE                |" << std::endl;
-	std::cout << "|                                                      |" << std::endl;
-	std::cout << "|1.CAR                                                 |" << std::endl;
-	std::cout << "|------------------------------------------------------|" << std::endl;
-	std::cout << "|------------------------------------------------------|" << std::endl;
-	std::cout << std::endl;
-	std::cout << "OPTION: ";
-	std::cin >> type_vehicle; 
-	
-	std::cout << "..." << std::endl;
-	std::cout << ".." << std::endl;
-	std::cout << "." << std::endl;
-	
-	if (type_vehicle == 1) {
+		//---------------------//
+		//----ID do Veículo----//
+		//---------------------//
 		
-		New_Vehicle.type.car = true;
-		New_Vehicle.vehicle_type = "Car";
+		total_added++; // quantidade de veículos cadastrados é incrementado.
 		
-	} else {
+		New_Vehicle.id = total_added; // o id da estrutura recebe o valor total de veículos cadastrados.
+		
+		//---------------------//
+		//---Tipo do Veículo---//
+		//---------------------//
+		
+		int type_vehicle = 0; // variável para transitar pelo menu
+		
+		while (type_vehicle !=0 || type_vehicle != 1) { // enquanto type_vehicle for diferente de 0 ou 1...
 		
 			std::cout << "." << std::endl;
 			std::cout << ".." << std::endl;
@@ -186,60 +67,142 @@ void add_vehicle () {     // procedimento para cadastrar um veículo ao sistema.
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << "|                                                      |" << std::endl;
-			std::cout << "|  ERROR, INSERT [Y]es or [N]o if you want to continue |" << std::endl; // exibe mensagem.
+			std::cout << "|                INPUT THE VEHICLE TYPE                |" << std::endl;
+			std::cout << "|                                                      |" << std::endl;
+			std::cout << "|1.CAR                                                 |" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << std::endl;
+			std::cout << "OPTION: ";
+			std::cin >> type_vehicle; // insere opcao escolhida.
+			
+			std::cout << "..." << std::endl;
+			std::cout << ".." << std::endl;
+			std::cout << "." << std::endl;
+			
+			if (type_vehicle == 1) { // se o tipo esolhido for carro...
+				
+				New_Vehicle.vehicle_type = "Car"; // o tipo do carro recebe a string na estrutura
+				break;                            // sai do ciclo.
+				
+			} else { // do contrario...
+				
+					std::cout << "." << std::endl;
+					std::cout << ".." << std::endl;
+					std::cout << "..." << std::endl;
+				
+					std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+					std::cout << "|------------------------------------------------------|" << std::endl;
+					std::cout << "|------------------------------------------------------|" << std::endl;
+					std::cout << "|                                                      |" << std::endl;
+					std::cout << "|              ERROR, INSERT A VALID TYPE              |" << std::endl; 
+					std::cout << "|                                                      |" << std::endl;
+					std::cout << "|------------------------------------------------------|" << std::endl;
+					std::cout << "|------------------------------------------------------|" << std::endl; 
+					
+					std::cout << "..." << std::endl;
+					std::cout << ".." << std::endl;
+					std::cout << "." << std::endl;
+					
+				// exibe mensagem e retorna ao início do ciclo.
+				
+				}	
+				
+			}
+			
+		std::cout << "." << std::endl;
+		std::cout << ".." << std::endl;
+		std::cout << "..." << std::endl;
+	
+		std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << "|                                                      |" << std::endl;
+		std::cout << "|              VEHICLE ADDED SUCCESSFULLY              |" << std::endl; 
+		std::cout << "|                                                      |" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		
+		std::cout << "..." << std::endl;
+		std::cout << ".." << std::endl;
+		std::cout << "." << std::endl;	
+		
+		Dealership[total_added] = New_Vehicle; // insere a estrutura no vetor global na posicao do ultimo id inserido.
+		
+		// exibe mensagem e retorna a tela de menu principal.
+			
+		std::cout << "." << std::endl;
+		std::cout << ".." << std::endl;
+		std::cout << "..." << std::endl;
+	
+		std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << "|                                                      |" << std::endl;
+		std::cout << "|                 Want to keep adding?                 |" << std::endl;
+		std::cout << "|                    [Y]es or [N]o                     |" << std::endl;
+		std::cout << "|                                                      |" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		
+		std::cout << std::endl;
+		std::cout << "OPTION: ";
+		std::cin >> answer; 
+		
+		std::cout << "..." << std::endl;
+		std::cout << ".." << std::endl;
+		std::cout << "." << std::endl;
+		
+		// ao termino da pesquisa é perguntando se o utiizador quer continuar.
+		
+		if (answer == 'N') { // caso não queira...
+			
+			break; // interrompe o ciclo e vai direto a tela de menu.
+			
+		} else if (answer != 'Y' && answer != 'N') { // sao responder corretamente...
+			
+			std::cout << "." << std::endl;
+			std::cout << ".." << std::endl;
+			std::cout << "..." << std::endl;
+		
+			std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << "|                                                      |" << std::endl;
+			std::cout << "|  ERROR, INSERT [Y]es or [N]o if you want to continue |" << std::endl; 
 			std::cout << "|                                                      |" << std::endl;
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << std::endl;
 			std::cout << "OPTION: ";
-			std::cin >> answer_type_vehicle; 
+			std::cin >> answer; 
+			
+			// exibe mensagem e obriga o utilizador a preencher corretamente o campo.
 			
 			std::cout << "..." << std::endl;
 			std::cout << ".." << std::endl;
 			std::cout << "." << std::endl;
-		
-		}	
-		
-	std::cout << "." << std::endl;
-	std::cout << ".." << std::endl;
-	std::cout << "..." << std::endl;
-
-	std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
-	std::cout << "|------------------------------------------------------|" << std::endl;
-	std::cout << "|------------------------------------------------------|" << std::endl;
-	std::cout << "|                                                      |" << std::endl;
-	std::cout << "|              VEHICLE ADDED SUCCESSFULLY              |" << std::endl; // exibe mensagem.
-	std::cout << "|                                                      |" << std::endl;
-	std::cout << "|------------------------------------------------------|" << std::endl;
-	std::cout << "|------------------------------------------------------|" << std::endl;
-	std::cout << std::endl;
+			
+		}
+		 
+	}
 	
-	std::cout << "..." << std::endl;
-	std::cout << ".." << std::endl;
-	std::cout << "." << std::endl;	
-		
-	Dealership[total_added] = New_Vehicle;
-		
 	}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-void display_vehicle() {
+void display_vehicle() { // procedimento para apresentar um veículo em particular pelo id.
 	
-	int idsearch = 0;
-	bool found = false;
-	char answer = 'Y';
+	int idsearch = 0;   // id de pesquisa.
+	bool found = false; // resultado da pesquisa.
+	char answer = 'Y';  // sim ou não para continuar.
 	
-	std::cout << "display_vehicle enabled" << std::endl;
-	
-	while (answer == 'Y') {
+	while (answer == 'Y') { // enquanto a resposta for Yes...
 	
 		std::cout << "." << std::endl;
 		std::cout << ".." << std::endl;
 		std::cout << "..." << std::endl;
 		
-		// exibe tela de menu com opcoes.
-	
 		std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
 		std::cout << "|------------------------------------------------------|" << std::endl;
 		std::cout << "|------------------------------------------------------|" << std::endl;
@@ -250,19 +213,17 @@ void display_vehicle() {
 		std::cout << "|------------------------------------------------------|" << std::endl;
 		std::cout << std::endl;
 		std::cout << "OPTION: ";
-		std::cin >> idsearch; 
+		std::cin >> idsearch;    // recebe o id de pesquisa.
 		
 		std::cout << "..." << std::endl;
 		std::cout << ".." << std::endl;
 		std::cout << "." << std::endl;
 		
-		found = false;
-		
-		for (int i=0; i<total_added; i++) {
+		for (int i=0; i<total_added; i++) { // ciclo para iterar sobre o vetor global.
 			
-			if (idsearch == Dealership[i + 1].id) {
+			if (idsearch == Dealership[i + 1].id) { // se o id de pesquisa for igual ao id da estrutura na posicao do id de pesquisa...
 				
-				found = true;
+				found = true; // resultado da pesquisa recebe verdadeiro.
 				
 				std::cout << "." << std::endl;
 				std::cout << ".." << std::endl;
@@ -279,13 +240,15 @@ void display_vehicle() {
 				
 				std::cout << "..." << std::endl;
 				std::cout << ".." << std::endl;
-				std::cout << "." << std::endl;			
+				std::cout << "." << std::endl;	
+				
+				// exibe os dados da estrutura.		
 				
 			}
 			
 		}
 		
-		if (found == false) {
+		if (found == false) { // se o resultado da pesquisa for falso...
 			
 			std::cout << "." << std::endl;
 			std::cout << ".." << std::endl;
@@ -301,13 +264,11 @@ void display_vehicle() {
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			
-			std::cout << std::endl;
-			std::cout << "OPTION: ";
-			std::cin >> idsearch; 
-			
 			std::cout << "..." << std::endl;
 			std::cout << ".." << std::endl;
 			std::cout << "." << std::endl;
+			
+			// exibe mensagem e pede outro numero de id para pesquisar.
 					
 		}
 			
@@ -327,17 +288,19 @@ void display_vehicle() {
 		
 		std::cout << std::endl;
 		std::cout << "OPTION: ";
-		std::cin >> answer; 
+		std::cin >> answer;      // insere a resposta para continuar o procedimento.
 		
 		std::cout << "..." << std::endl;
 		std::cout << ".." << std::endl;
 		std::cout << "." << std::endl;
 		
-		if (answer == 'N') {
+		// ao termino da pesquisa é perguntando se o utiizador quer continuar.
+		
+		if (answer == 'N') { // caso não queira...
 			
-			break;
+			break; // interrompe o ciclo e vai direto a tela de menu.
 			
-		} else if (answer != 'Y' && answer != 'N') {
+		} else if (answer != 'Y' && answer != 'N') { // sao responder corretamente...
 			
 			std::cout << "." << std::endl;
 			std::cout << ".." << std::endl;
@@ -347,13 +310,15 @@ void display_vehicle() {
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << "|                                                      |" << std::endl;
-			std::cout << "|  ERROR, INSERT [Y]es or [N]o if you want to continue |" << std::endl; // exibe mensagem.
+			std::cout << "|  ERROR, INSERT [Y]es or [N]o if you want to continue |" << std::endl; 
 			std::cout << "|                                                      |" << std::endl;
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << std::endl;
 			std::cout << "OPTION: ";
 			std::cin >> answer; 
+			
+			// exibe mensagem e obriga o utilizador a preencher corretamente o campo.
 			
 			std::cout << "..." << std::endl;
 			std::cout << ".." << std::endl;
@@ -374,6 +339,10 @@ int main(int argc, char** argv) {
 	while (menucursor != 3) { // enquanto o cursos for diferente de 3...
 	
 		// exibe tela de menu com opcoes.
+		
+		std::cout << "." << std::endl;
+		std::cout << ".." << std::endl;
+		std::cout << "..." << std::endl;
 	
 		std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
 		std::cout << "|------------------------------------------------------|" << std::endl;
@@ -387,9 +356,12 @@ int main(int argc, char** argv) {
 		std::cout << "|------------------------------------------------------|" << std::endl;
 		std::cout << std::endl;
 		std::cout << "OPTION: ";
-		std::cin >> menucursor; 
+		std::cin >> menucursor;  // insere a opcao desejada.
 		
-		
+		std::cout << "..." << std::endl;
+		std::cout << ".." << std::endl;
+		std::cout << "." << std::endl;
+			
 		if (menucursor == 1) { // se o cursor do menu for 1...
 			
 			add_vehicle(); // invoca o procedimento de cadastro de veículos.
@@ -416,9 +388,6 @@ int main(int argc, char** argv) {
 			std::cout << "|                                                      |" << std::endl;
 			std::cout << "|------------------------------------------------------|" << std::endl;
 			std::cout << "|------------------------------------------------------|" << std::endl;
-			std::cout << std::endl;
-			std::cout << "OPTION: ";
-			std::cin >> menucursor; 
 			
 			std::cout << "..." << std::endl;
 			std::cout << ".." << std::endl;
