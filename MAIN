@@ -110,6 +110,18 @@ void add_vehicle () {     // procedimento para cadastrar um veículo ao sistema.
 				
 			}
 			
+		//---------------------//
+		//---Tipo do Veículo---//
+		//---------------------//
+			
+		int license_plate = 0;
+		
+		while (license_plate != 0 ) {
+		
+			return;	
+		
+		}
+			
 		std::cout << "." << std::endl;
 		std::cout << ".." << std::endl;
 		std::cout << "..." << std::endl;
@@ -129,7 +141,7 @@ void add_vehicle () {     // procedimento para cadastrar um veículo ao sistema.
 		
 		Dealership[total_added] = New_Vehicle; // insere a estrutura no vetor global na posicao do ultimo id inserido.
 		
-		// exibe mensagem e retorna a tela de menu principal.
+		// exibe mensagem e retorna a tela de menu principal.		
 			
 		std::cout << "." << std::endl;
 		std::cout << ".." << std::endl;
@@ -159,35 +171,39 @@ void add_vehicle () {     // procedimento para cadastrar um veículo ao sistema.
 			
 			break; // interrompe o ciclo e vai direto a tela de menu.
 			
-		} else if (answer != 'Y' && answer != 'N') { // sao responder corretamente...
-			
-			std::cout << "." << std::endl;
-			std::cout << ".." << std::endl;
-			std::cout << "..." << std::endl;
+		} else { // sao responder corretamente...
 		
-			std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
-			std::cout << "|------------------------------------------------------|" << std::endl;
-			std::cout << "|------------------------------------------------------|" << std::endl;
-			std::cout << "|                                                      |" << std::endl;
-			std::cout << "|  ERROR, INSERT [Y]es or [N]o if you want to continue |" << std::endl; 
-			std::cout << "|                                                      |" << std::endl;
-			std::cout << "|------------------------------------------------------|" << std::endl;
-			std::cout << "|------------------------------------------------------|" << std::endl;
-			std::cout << std::endl;
-			std::cout << "OPTION: ";
-			std::cin >> answer; 
+			while (answer != 'Y' && answer != 'N') { // permanece no ciclo até responder devidamente...
+				
+				std::cout << "." << std::endl;
+				std::cout << ".." << std::endl;
+				std::cout << "..." << std::endl;
 			
-			// exibe mensagem e obriga o utilizador a preencher corretamente o campo.
+				std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+				std::cout << "|------------------------------------------------------|" << std::endl;
+				std::cout << "|------------------------------------------------------|" << std::endl;
+				std::cout << "|                                                      |" << std::endl;
+				std::cout << "|  ERROR, INSERT [Y]es or [N]o if you want to continue |" << std::endl; 
+				std::cout << "|                                                      |" << std::endl;
+				std::cout << "|------------------------------------------------------|" << std::endl;
+				std::cout << "|------------------------------------------------------|" << std::endl;
+				std::cout << std::endl;
+				std::cout << "OPTION: ";
+				std::cin >> answer; 
+				
+				// exibe mensagem e obriga o utilizador a preencher corretamente o campo.
+				
+				std::cout << "..." << std::endl;
+				std::cout << ".." << std::endl;
+				std::cout << "." << std::endl;
 			
-			std::cout << "..." << std::endl;
-			std::cout << ".." << std::endl;
-			std::cout << "." << std::endl;
+			}
 			
 		}
 		 
 	}
 	
-	}
+}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -300,29 +316,33 @@ void display_vehicle() { // procedimento para apresentar um veículo em particul
 			
 			break; // interrompe o ciclo e vai direto a tela de menu.
 			
-		} else if (answer != 'Y' && answer != 'N') { // sao responder corretamente...
-			
-			std::cout << "." << std::endl;
-			std::cout << ".." << std::endl;
-			std::cout << "..." << std::endl;
+		} else { // sao responder corretamente...
 		
-			std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
-			std::cout << "|------------------------------------------------------|" << std::endl;
-			std::cout << "|------------------------------------------------------|" << std::endl;
-			std::cout << "|                                                      |" << std::endl;
-			std::cout << "|  ERROR, INSERT [Y]es or [N]o if you want to continue |" << std::endl; 
-			std::cout << "|                                                      |" << std::endl;
-			std::cout << "|------------------------------------------------------|" << std::endl;
-			std::cout << "|------------------------------------------------------|" << std::endl;
-			std::cout << std::endl;
-			std::cout << "OPTION: ";
-			std::cin >> answer; 
+			while (answer != 'Y' && answer != 'N') { // permanece no ciclo até responder devidamente...
+				
+				std::cout << "." << std::endl;
+				std::cout << ".." << std::endl;
+				std::cout << "..." << std::endl;
 			
-			// exibe mensagem e obriga o utilizador a preencher corretamente o campo.
+				std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+				std::cout << "|------------------------------------------------------|" << std::endl;
+				std::cout << "|------------------------------------------------------|" << std::endl;
+				std::cout << "|                                                      |" << std::endl;
+				std::cout << "|  ERROR, INSERT [Y]es or [N]o if you want to continue |" << std::endl; 
+				std::cout << "|                                                      |" << std::endl;
+				std::cout << "|------------------------------------------------------|" << std::endl;
+				std::cout << "|------------------------------------------------------|" << std::endl;
+				std::cout << std::endl;
+				std::cout << "OPTION: ";
+				std::cin >> answer; 
+				
+				// exibe mensagem e obriga o utilizador a preencher corretamente o campo.
+				
+				std::cout << "..." << std::endl;
+				std::cout << ".." << std::endl;
+				std::cout << "." << std::endl;
 			
-			std::cout << "..." << std::endl;
-			std::cout << ".." << std::endl;
-			std::cout << "." << std::endl;
+			}
 			
 		}
 		
