@@ -2,25 +2,26 @@
 
 #include <iostream> // biblioteca nativa do compilador
 #include <string>   // bibloteca de strings
+#include <cstring>  // biblioteca de caractere
 #define max 100     // constante
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 struct Vehicles { // estrutura principal
 
-	int id;                    // id do veículo
-	std::string vehicle_type;  // tipo de veículo
-	std::string license_plate; // placa ou matrícula
-	std::string color;         // cor do veículo
-	std::string fuel_type;     // tipo de combustível
-	int year;                  // ano de fabricacao
-	int odometer;              // valor atual do odometro
-	float rental_rate;         // valor do aluguel
-	std::string available;     // disponibilidade
-	std::string transmission;  // transmissão
-	std::string model;         // modelo 
-	std::string brand;         // marca
-	std::string features;      // informacoes adicionais
+	int id;                                     // id do veículo
+	std::string vehicle_type;                   // tipo de veículo
+	std::string license_plate;                  // placa ou matrícula
+	std::string color;                          // cor do veículo
+	std::string fuel_type;                      // tipo de combustível
+	int year;                                   // ano de fabricacao
+	int odometer;                               // valor atual do odometro
+	float rental_rate;                          // valor do aluguel
+	std::string available;                      // disponibilidade
+	std::string transmission;                    // transmissão
+	std::string model;                          // modelo 
+	std::string brand;                          // marca
+	std::string features;                       // informacoes adicionais
 	
 	Vehicles() : id(0), vehicle_type(""), license_plate(""), color(""), fuel_type(""), year(0), odometer(0),
                  rental_rate(0.0f), available(""), transmission(""), model(""), brand(""), features("") {}
@@ -33,6 +34,16 @@ struct Vehicles { // estrutura principal
 
 int total_added = 0;      // quantidade de veículos cadastrados.
 Vehicles Dealership[max]; // array do tipo estrutura recebe o tamanho max de veículos cadastrados.
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+void get_options(char& answer) { // procedimento para receber a resposta do utilizador sempre que queira continuar ou nao a tarefa.
+	
+	std::cout << "OPTION: ";
+    std::cin >> answer;
+    std::cout << "..." << std::endl << ".." << std::endl << "." << std::endl;
+	
+}
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -111,16 +122,56 @@ void add_vehicle () {     // procedimento para cadastrar um veículo ao sistema.
 			}
 			
 		//---------------------//
-		//---Tipo do Veículo---//
+		//---Matrícula/Placa---//
 		//---------------------//
 			
-		int license_plate = 0;
+		std::string license_plate;
 		
-		while (license_plate != 0 ) {
+		std::cout << "." << std::endl;
+		std::cout << ".." << std::endl;
+		std::cout << "..." << std::endl;
+	
+		std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << "|                                                      |" << std::endl;
+		std::cout << "|               INPUT THE LICENSE PLATE                |" << std::endl;
+		std::cout << "|                                                      |" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << "|------------------------------------------------------|" << std::endl;
+		std::cout << std::endl;
+		std::cout << "OPTION: ";
+		std::cin >> license_plate; // insere opcao escolhida.
 		
-			return;	
+		std::cout << "..." << std::endl;
+		std::cout << ".." << std::endl;
+		std::cout << "." << std::endl;
 		
-		}
+		while (license_plate.length() != 8) { // enquanto o numero de caracteres da string for diferente de 8...
+	
+			std::cout << "." << std::endl;
+			std::cout << ".." << std::endl;
+			std::cout << "..." << std::endl;
+		
+			std::cout << "<<<<<<<<<<<<<<<.:[RENT.SYSTEM.SOFTWARE]:.>>>>>>>>>>>>>>>" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << "|                                                      |" << std::endl;
+			std::cout << "|                ERROR, MAX 8 CHARACTERS               |" << std::endl; 
+			std::cout << "|                                                      |" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl;
+			std::cout << "|------------------------------------------------------|" << std::endl; 
+			std::cout << std::endl;
+			std::cout << "OPTION: ";
+			std::cin >> license_plate; // insere opcao escolhida.
+			
+			std::cout << "..." << std::endl;
+			std::cout << ".." << std::endl;
+			std::cout << "." << std::endl;
+			
+			// exibe mensagem e retorna ao início do ciclo.
+	
+		}	
 			
 		std::cout << "." << std::endl;
 		std::cout << ".." << std::endl;
@@ -139,7 +190,8 @@ void add_vehicle () {     // procedimento para cadastrar um veículo ao sistema.
 		std::cout << ".." << std::endl;
 		std::cout << "." << std::endl;	
 		
-		Dealership[total_added] = New_Vehicle; // insere a estrutura no vetor global na posicao do ultimo id inserido.
+		New_Vehicle.license_plate = license_plate; // insere a variável na estrutura.
+		Dealership[total_added] = New_Vehicle;     // insere a estrutura no vetor global na posicao do ultimo id inserido.
 		
 		// exibe mensagem e retorna a tela de menu principal.		
 			
@@ -249,7 +301,8 @@ void display_vehicle() { // procedimento para apresentar um veículo em particul
 				std::cout << "|------------------------------------------------------|" << std::endl;
 				std::cout << "|------------------------------------------------------|" << std::endl;
 				std::cout << "|ID: " << idsearch << std::endl;  
-				std::cout << "|TYPE: " << Dealership[i + 1].vehicle_type << std::endl;                            
+				std::cout << "|TYPE: " << Dealership[i + 1].vehicle_type << std::endl;    
+				std::cout << "|LICENSE PLATE: " << Dealership[i + 1].license_plate << std::endl;                        
 				std::cout << "|                                                      |" << std::endl;
 				std::cout << "|------------------------------------------------------|" << std::endl;
 				std::cout << "|------------------------------------------------------|" << std::endl;
@@ -439,6 +492,9 @@ int main(int argc, char** argv) {
 	std::cout << "..." << std::endl;
 	std::cout << ".." << std::endl;
 	std::cout << "." << std::endl;
+	std::cout << "." << std::endl;
+	std::cout << ".." << std::endl;
+	std::cout << "..." << std::endl;
 	
 	return 0;
 }
